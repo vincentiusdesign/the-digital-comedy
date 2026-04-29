@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Digital Comedy</title>
+  <meta name="description" content="A single-page interactive examination of the web through the structure of Dante's Divine Comedy. Hell, Purgatory, Heaven.">
+
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="hell.css">
+  <link rel="stylesheet" href="purgatory.css">
+  <link rel="stylesheet" href="heaven.css">
+
+  <!-- Bootstrap 3.3.7 — scoped for use ONLY in Terrace 5.
+       The terrace about frameworks is itself a framework. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+
+<!-- ====================================================================
+     SKIP-NAV — for keyboard / screen reader users
+     ==================================================================== -->
+<a href="#main-content" class="skip-nav sr-only">Skip to main content</a>
+
+
+<!-- ====================================================================
+     PURGATORY MOUNTAIN PROGRESS INDICATOR
+
+     Visible only inside Purgatory. Updates as user moves between
+     terraces. Designer styles position, mountain illustration, marker.
+     ==================================================================== -->
+<aside class="mountain-indicator" aria-hidden="true">
+  <div class="mountain-indicator-marker" data-current-terrace="1"></div>
+  <span class="mountain-indicator-live sr-only" aria-live="polite"></span>
+</aside>
+
+
+<!-- ====================================================================
+     HEAVEN SPHERE NAVIGATOR
+
+     Becomes available only after Perceptual Transformation.
+     ==================================================================== -->
+<nav class="sphere-navigator" aria-label="Heavenly spheres navigator">
+  <ul>
+    <li><a href="#sphere-1" data-sphere="sphere-1">1 — Moon</a></li>
+    <li><a href="#sphere-2" data-sphere="sphere-2">2 — Mercury</a></li>
+    <li><a href="#sphere-3" data-sphere="sphere-3">3 — Venus</a></li>
+    <li><a href="#sphere-4" data-sphere="sphere-4">4 — Sun</a></li>
+    <li><a href="#sphere-5" data-sphere="sphere-5">5 — Mars</a></li>
+    <li><a href="#sphere-6" data-sphere="sphere-6">6 — Jupiter</a></li>
+    <li><a href="#sphere-7" data-sphere="sphere-7">7 — Saturn</a></li>
+    <li><a href="#sphere-8" data-sphere="sphere-8">8 — Fixed Stars</a></li>
+    <li><a href="#sphere-9" data-sphere="sphere-9">9 — Primum Mobile</a></li>
+  </ul>
+</nav>
+
+
+<main id="main-content">
+
+
+  <!-- ==================================================================
+       THE ROTATION WRAPPER
+
+       One container for everything. JS toggles .is-inverted to fire
+       the rotation. The wrapper rotates 180° around the pivot div
+       (between Hell and the ascent), and each direct child counter-
+       rotates with a delay so sections tumble through a full
+       revolution before settling upright.
+
+       Mechanic details: see main.js (initInversion).
+       ================================================================== -->
+  <div class="wrapper" id="wrapper">
+
+
+    <!-- ==================================================================
+         I. HELL — THE WEB AS PREDATOR
+         Wrapped in a <section> so the realm has a semantic anchor and
+         a class hook for realm-wide styling. The realm itself does NOT
+         tumble during inversion (see CSS) — its inner sections do.
+         ================================================================== -->
+    <section class="hell" aria-labelledby="hell-heading">
+
+      <h2 id="hell-heading" class="realm-heading">Hell</h2>
+
+
+      <!-- ================================================================
+           THE GATE OF HELL
+           ================================================================ -->
+      <section id="gate" class="threshold gate" aria-label="The Gate of Hell">
+        <p class="sr-only">Abandon all hope, ye who enter here.</p>
+        <div class="gate-panel gate-panel--top" aria-hidden="true">
+          <div class="gate-inscription">Abandon all hope, ye who enter here.</div>
+        </div>
+        <div class="gate-panel gate-panel--bottom" aria-hidden="true">
+          <div class="gate-inscription">Abandon all hope, ye who enter here.</div>
+        </div>
+      </section>
+
+
+    <!-- ================================================================
+         THE VESTIBULE — the uncommitted
+         ================================================================ -->
+    <section id="vestibule" class="threshold vestibule" aria-label="The Vestibule of the Uncommitted">
+
+      <div class="vestibule-prologue">
+        <p>Before the circles begin, there is a place for those who never became anything.</p>
+        <p>Not evil. Not good. Under construction. Coming soon. This domain is parked. We&rsquo;ll be back shortly. Please check back later. This page has moved. This page has not moved. This page never moved because this page never existed in any meaningful sense.</p>
+        <p>These are the uncommitted: sites that opened a tab and never closed it. Pages that promised a launch date and kept it. Domains that someone owned but never inhabited. The spinning GIFs of eternal loading, the pastel backgrounds with nothing behind them, the placeholder that became the content.</p>
+        <p>They are not punished here. They are simply not finished.</p>
+        <p>There is a difference.</p>
+      </div>
+
+      <ul class="vestibule-grid" role="list">
+
+        <li class="v-item v-item--404">
+          <h3>404 &mdash; Not Found</h3>
+          <p>The requested URL was not found on this server.</p>
+          <p class="v-fineprint">This page never moved because this page never existed in any meaningful sense.</p>
+        </li>
+
+        <li class="v-item v-item--coming-soon">
+          <p class="v-eyebrow">Launching</p>
+          <h3>Spring 2009</h3>
+          <p class="v-tagline">Pages that promised a launch date and kept it.</p>
+        </li>
+
+        <li class="v-item v-item--loading">
+          <div class="v-spinner" aria-hidden="true"></div>
+          <p>Loading&hellip;</p>
+          <p class="v-caption">the placeholder that became the content</p>
+        </li>
+
+        <li class="v-item v-item--construct">
+          <h3>Under Construction</h3>
+          <p>Please check back later.</p>
+        </li>
+
+        <li class="v-item v-item--maintenance">
+          <h3>We&rsquo;ll be back shortly.</h3>
+          <p>Sites that opened a tab and never closed it.</p>
+        </li>
+
+        <li class="v-item v-item--personal">
+          <h3>Welcome to my homepage!</h3>
+          <p>Hi! I&rsquo;m going to put stuff here soon. Check back later for updates!!</p>
+          <p class="v-counter" aria-label="Visitor count">00000007</p>
+        </li>
+
+        <li class="v-item v-item--newsletter">
+          <p class="v-eyebrow">v0.1 / private beta</p>
+          <h3>Be the first to know.</h3>
+        </li>
+
+        <li class="v-item v-item--page-moved">
+          <h3>This page has moved.</h3>
+          <h3>This page has not moved.</h3>
+          <p class="v-fineprint">There is a difference.</p>
+        </li>
+
+        <li class="v-item v-item--empty">
+          <p class="v-corner">the pastel backgrounds with nothing behind them.</p>
+        </li>
+
+        <li class="v-item v-item--lorem">
+          <h3>Lorem ipsum</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>Domains that someone owned but never inhabited.</p>
+        </li>
+
+      </ul>
+
+      <p class="vestibule-coda">Charon does not look at them.</p>
+    </section>
+
+
+    <!-- ================================================================
+         THE ACHERON — pass-through, no JS
+         ================================================================ -->
+    <section id="acheron" class="threshold acheron" aria-hidden="true">
+      <div class="acheron-current"></div>
+    </section>
+
+
+    <!-- ================================================================
+         CIRCLE 1 — LIMBO: THE MERELY OBSOLETE
+
+         Old internet aesthetics + failed interactivity. Affordances
+         are present (cursor changes, hover states); responses are not.
+         JS suppresses link/button activations. Forms accept input
+         and silently clear.
+         ================================================================ -->
+    <section id="circle-1" class="circle circle--limbo" aria-labelledby="circle-1-heading">
+      <h3 id="circle-1-heading" class="circle-title">Circle 1 &mdash; Limbo</h3>
+      <p class="circle-subtitle">The Merely Obsolete</p>
+
+      <div class="circle-content">
+
+        <!-- A handful of artifacts that LOOK alive — links, buttons,
+             a guestbook form, a counter, a "next page" widget. None
+             of them respond. JS preventDefaults all of them. -->
+
+        <div class="limbo-artifact limbo-artifact--guestbook">
+          <h4>Sign the Guestbook</h4>
+          <form>
+            <label>Your name <input type="text" name="name"></label>
+            <label>Your message <textarea name="message"></textarea></label>
+            <button type="submit">Sign</button>
+          </form>
+          <p class="limbo-meta">Last entry: never</p>
+        </div>
+
+        <div class="limbo-artifact limbo-artifact--counter">
+          <p>You are visitor</p>
+          <p class="limbo-counter">00000000</p>
+          <p>Thanks for stopping by!</p>
+        </div>
+
+        <div class="limbo-artifact limbo-artifact--webring">
+          <h4>The Top 10 Sites Webring</h4>
+          <ul>
+            <li><a href="#">&laquo; Previous</a></li>
+            <li><a href="#">Random</a></li>
+            <li><a href="#">List All</a></li>
+            <li><a href="#">Next &raquo;</a></li>
+          </ul>
+        </div>
+
+        <div class="limbo-artifact limbo-artifact--blog">
+          <h4>My Web Log</h4>
+          <article>
+            <h5><a href="#">Just got a new modem!</a></h5>
+            <p>posted by webmaster &mdash; January 14, 2003</p>
+            <p>This thing is FAST. I&rsquo;m getting like 56k speeds now. More posts coming soon&hellip;</p>
+            <p><a href="#">Comments (0)</a> &middot; <a href="#">Permalink</a></p>
+          </article>
+        </div>
+
+        <div class="limbo-artifact limbo-artifact--midi">
+          <p>Now playing: <em>welcome.mid</em></p>
+          <button type="button">&#9658; Play</button>
+          <button type="button">&#9632; Stop</button>
+        </div>
+
+        <div class="limbo-artifact limbo-artifact--links">
+          <h4>Cool Sites</h4>
+          <ul>
+            <li><a href="#">My friend Dave&rsquo;s page</a></li>
+            <li><a href="#">Geocities &mdash; Heartland</a></li>
+            <li><a href="#">Ask Jeeves</a></li>
+            <li><a href="#">AltaVista</a></li>
+            <li><a href="#">Excite!</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="circle-verdict" data-verdict>They asked nothing of you. In time, nothing is exactly what remained.</p>
+    </section>
+
+
+    <!-- ================================================================
+         CIRCLE 2 — LUST: SENSORY ASSAULT
+
+         Multiple chaos sources active simultaneously. JS attempts to
+         play any audio/video. Marquees, animated GIFs, autoplay
+         video, MIDI all live in the markup.
+         ================================================================ -->
+    <section id="circle-2" class="circle circle--lust" aria-labelledby="circle-2-heading">
+      <h3 id="circle-2-heading" class="circle-title">Circle 2 &mdash; Lust</h3>
+      <p class="circle-subtitle">Sensory Assault</p>
+
+      <div class="circle-content">
+
+        <!-- Autoplay attempts — JS will call .play() on these. -->
+        <video class="lust-video" muted loop playsinline aria-hidden="true">
+          <!-- The designer adds source(s); browsers without autoplay
+               support gracefully ignore. -->
+        </video>
+        <audio class="lust-audio" loop aria-hidden="true">
+          <!-- The designer adds source(s). -->
+        </audio>
+
+        <!-- The deprecated <marquee> still works in browsers. The
+             designer can replace with CSS animation if preferred. -->
+        <marquee class="lust-marquee" behavior="scroll" direction="left" scrollamount="8">
+          BUY NOW &middot; CLICK HERE &middot; AMAZING DEALS &middot; LIMITED TIME &middot; HOT SINGLES &middot; FREE DOWNLOAD &middot; YOU WON&rsquo;T BELIEVE THIS &middot;
+        </marquee>
+        <marquee class="lust-marquee lust-marquee--reverse" behavior="scroll" direction="right" scrollamount="6">
+          ★彡 WELCOME TO MY WEBSITE ★彡 PLEASE SIGN MY GUESTBOOK ★彡 BEST VIEWED IN NETSCAPE 4 AT 800x600 ★彡
+        </marquee>
+        <marquee class="lust-marquee" behavior="alternate" scrollamount="14">
+          &laquo;&laquo;&laquo; ATTENTION &raquo;&raquo;&raquo;
+        </marquee>
+
+        <!-- Multiple animated-GIF placeholders, tiled or scattered.
+             Designer adds the actual GIFs as CSS background-images. -->
+        <div class="lust-gif lust-gif--1" aria-hidden="true"></div>
+        <div class="lust-gif lust-gif--2" aria-hidden="true"></div>
+        <div class="lust-gif lust-gif--3" aria-hidden="true"></div>
+        <div class="lust-gif lust-gif--4" aria-hidden="true"></div>
+
+        <!-- Several blinking text elements (CSS handles the blink). -->
+        <p class="lust-blink lust-blink--1">CLICK HERE!!!</p>
+        <p class="lust-blink lust-blink--2">NEW!!!</p>
+        <p class="lust-blink lust-blink--3">FREE!!!</p>
+        <p class="lust-blink lust-blink--4">HOT!!!</p>
+
+        <!-- Tiled patterned background lives via CSS on the section. -->
+
+      </div>
+
+      <p class="circle-verdict" data-verdict>It was never about you.</p>
+    </section>
+
+
+    <!-- ================================================================
+         CIRCLE 3 — GLUTTONY: BLOAT (stacked cycling modals)
+         ================================================================ -->
+    <section id="circle-3" class="circle circle--gluttony" aria-labelledby="circle-3-heading">
+      <h3 id="circle-3-heading" class="circle-title">Circle 3 &mdash; Gluttony</h3>
+      <p class="circle-subtitle">Bloat</p>
+
+      <div class="circle-content">
+
+        <!-- The "actual content" beneath all the modals. Briefly visible
+             between cycles. Designer can fill with anything; the doc
+             specifies that "Please wait." appears here. -->
+        <article class="gluttony-content">
+          <h4>Today&rsquo;s Article</h4>
+          <p>Please wait.</p>
+        </article>
+
+        <!-- Modal 1: Cookie consent -->
+        <div class="modal modal--cookie" role="dialog" aria-labelledby="modal-cookie-title">
+          <div class="modal-inner">
+            <h5 id="modal-cookie-title">We value your privacy.</h5>
+            <p>We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking &ldquo;Accept All&rdquo;, you consent to our use of cookies.</p>
+            <button type="button" class="modal-button">Accept All</button>
+            <button type="button" class="modal-button modal-button--secondary">Manage Preferences</button>
+            <button type="button" class="modal-close" aria-label="Close">&times;</button>
+          </div>
+        </div>
+
+        <!-- Modal 2: Newsletter -->
+        <div class="modal modal--newsletter" role="dialog" aria-labelledby="modal-newsletter-title">
+          <div class="modal-inner">
+            <h5 id="modal-newsletter-title">Wait! Don&rsquo;t miss out.</h5>
+            <p>Subscribe to our newsletter for exclusive content and weekly updates.</p>
+            <form>
+              <input type="email" placeholder="your@email.com" aria-label="Email address">
+              <button type="submit" class="modal-button">Subscribe</button>
+            </form>
+            <button type="button" class="modal-close" aria-label="Close">&times;</button>
+          </div>
+        </div>
+
+        <!-- Modal 3: Chat widget -->
+        <div class="modal modal--chat" role="dialog" aria-labelledby="modal-chat-title">
+          <div class="modal-inner">
+            <h5 id="modal-chat-title">Hi there! &#x1F44B;</h5>
+            <p>Have any questions? We&rsquo;re here to help. Start a chat with our team.</p>
+            <button type="button" class="modal-button">Start Chat</button>
+            <button type="button" class="modal-close" aria-label="Close">&times;</button>
+          </div>
+        </div>
+
+        <!-- Modal 4: Notification request -->
+        <div class="modal modal--notifications" role="dialog" aria-labelledby="modal-notif-title">
+          <div class="modal-inner">
+            <h5 id="modal-notif-title">Stay updated</h5>
+            <p>Allow notifications to receive instant updates on news and offers.</p>
+            <button type="button" class="modal-button">Allow</button>
+            <button type="button" class="modal-button modal-button--secondary">Maybe later</button>
+            <button type="button" class="modal-close" aria-label="Close">&times;</button>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="circle-verdict" data-verdict>It did not take from you with intention. It took from you the way weather takes &mdash; because it could, because it was there, because stopping never occurred to it.</p>
+    </section>
+
+
+    <!-- ================================================================
+         CIRCLE 4 — GREED: EXTRACTION (unsubscribe gauntlet)
+         ================================================================ -->
+    <section id="circle-4" class="circle circle--greed" aria-labelledby="circle-4-heading">
+      <h3 id="circle-4-heading" class="circle-title">Circle 4 &mdash; Greed</h3>
+      <p class="circle-subtitle">Extraction</p>
+
+      <div class="circle-content">
+
+        <p class="greed-intro">You wish to unsubscribe. Please follow the steps below.</p>
+
+        <!-- Each gauntlet step. JS toggles is-active per submission. -->
+
+        <form class="gauntlet-step" data-step="1">
+          <h4>Step 1 of 4 &mdash; Confirm your email</h4>
+          <label>Please re-enter the email address you wish to unsubscribe.<br>
+            <input type="email" placeholder="your@email.com">
+          </label>
+          <button type="submit">Continue</button>
+        </form>
+
+        <form class="gauntlet-step" data-step="2">
+          <h4>Step 2 of 4 &mdash; Tell us why</h4>
+          <p>We&rsquo;d love to know what we could do better.</p>
+          <label><input type="radio" name="reason"> Too many emails</label>
+          <label><input type="radio" name="reason"> Content not relevant</label>
+          <label><input type="radio" name="reason"> Never signed up</label>
+          <label><input type="radio" name="reason"> Other</label>
+          <button type="submit">Continue</button>
+          <button type="button">Cancel</button>
+        </form>
+
+        <form class="gauntlet-step" data-step="3">
+          <h4>Step 3 of 4 &mdash; Update your preferences</h4>
+          <p>Manage which communications you&rsquo;d like to receive.</p>
+          <label><input type="checkbox" data-prefer="true" checked> Weekly newsletter</label>
+          <label><input type="checkbox" data-prefer="true" checked> Special offers and promotions</label>
+          <label><input type="checkbox" data-prefer="true" checked> Product announcements</label>
+          <label><input type="checkbox" data-prefer="true" checked> Partner offers from carefully selected third parties</label>
+          <label><input type="checkbox" data-prefer="true" checked> Account activity and security updates</label>
+          <button type="submit">Save Preferences</button>
+        </form>
+
+        <form class="gauntlet-step" data-step="4">
+          <h4>Step 4 of 4 &mdash; Are you sure?</h4>
+          <p>You will lose access to exclusive subscriber-only content.</p>
+          <button type="submit">Confirm Cancellation</button>
+          <button type="button">Keep My Subscription</button>
+          <p class="greed-fineprint">By clicking &ldquo;Confirm Cancellation&rdquo; you agree to continue receiving essential service communications.</p>
+        </form>
+
+      </div>
+
+      <!-- The verdict. JS adds .is-revealed only after enough
+           gauntlet interactions. -->
+      <p class="circle-verdict verdict" data-verdict>You agreed to this.</p>
+    </section>
+
+
+    <!-- ================================================================
+         CIRCLE 5 — WRATH: HOSTILE UX
+         ================================================================ -->
+    <section id="circle-5" class="circle circle--wrath" aria-labelledby="circle-5-heading">
+      <h3 id="circle-5-heading" class="circle-title">Circle 5 &mdash; Wrath</h3>
+      <p class="circle-subtitle">Hostile UX</p>
+
+      <div class="circle-content">
+
+        <!-- The hostile form. -->
+        <form class="wrath-form" novalidate>
+          <h4>Contact us</h4>
+          <label>Name <input type="text" name="name"></label>
+          <label>Email <input type="email" name="email"></label>
+          <label>Subject <input type="text" name="subject"></label>
+          <label>Message <textarea name="message" rows="5"></textarea></label>
+          <button type="submit">Send</button>
+          <p class="wrath-error" role="alert">Error.</p>
+        </form>
+
+        <!-- The CAPTCHA that fails. -->
+        <div class="wrath-captcha">
+          <label>
+            <input type="checkbox" class="wrath-captcha-check">
+            I&rsquo;m not a robot
+          </label>
+          <p class="wrath-captcha-status">
+            <span class="wrath-captcha-checking">Verifying&hellip;</span>
+            <span class="wrath-captcha-failed">Verification failed. Please try again.</span>
+          </p>
+        </div>
+
+        <!-- The back button trap. Looks like an escape; goes deeper. -->
+        <button type="button" class="wrath-back-button">&larr; Back</button>
+
+        <!-- The trap target — clicking "back" scrolls here. -->
+        <div class="wrath-trap-target">
+          <p>You are still here.</p>
+        </div>
+
+      </div>
+
+      <p class="circle-verdict" data-verdict>You were never the intended user.</p>
+    </section>
+
+
+    <!-- ================================================================
+         CIRCLE 6 — HERESY: FALSE PROMISES (nesting clickbait)
+         ================================================================ -->
+    <section id="circle-6" class="circle circle--heresy" aria-labelledby="circle-6-heading">
+      <h3 id="circle-6-heading" class="circle-title">Circle 6 &mdash; Heresy</h3>
+      <p class="circle-subtitle">False Promises</p>
+
+      <div class="circle-content">
+
+        <header class="heresy-header">
+          <h4>Today&rsquo;s Top Stories</h4>
+        </header>
+
+        <!-- The article container. JS replaces its contents on each
+             "click through." After enough levels, verdict appears. -->
+        <article class="heresy-article">
+          <!-- Populated by JS. -->
+        </article>
+
+        <aside class="heresy-sidebar">
+          <h5>You may also like</h5>
+          <ul>
+            <li><a href="#" class="heresy-link">10 Things Doctors Wish You Knew</a></li>
+            <li><a href="#" class="heresy-link">This Weird Trick Will Save You Hundreds</a></li>
+            <li><a href="#" class="heresy-link">She Tried This For A Week. The Results.</a></li>
+            <li><a href="#" class="heresy-link">You Won&rsquo;t Believe What She Did Next</a></li>
+          </ul>
+        </aside>
+
+      </div>
+
+      <!-- Verdict appears via JS replacing the article body once
+           the user has clicked through enough layers. -->
+    </section>
+
+
+    <!-- ================================================================
+         CIRCLE 7 — VIOLENCE: SURVEILLANCE
+         ================================================================ -->
+    <section id="circle-7" class="circle circle--violence" aria-labelledby="circle-7-heading">
+      <h3 id="circle-7-heading" class="circle-title">Circle 7 &mdash; Violence</h3>
+      <p class="circle-subtitle">Surveillance</p>
+
+      <div class="circle-content">
+
+        <h4 class="violence-dashboard-title">Visitor Analytics &mdash; Live</h4>
+        <p class="violence-dashboard-subtitle">Data collected from this session, on this device, in real time.</p>
+
+        <!-- JS populates this list with real fingerprint data. -->
+        <ul class="violence-tracker-list" aria-live="polite"></ul>
+
+        <p class="violence-partial-note">
+          Visible items above: a partial sample.<br>
+          The rest is still running.
+        </p>
+
+      </div>
+
+      <p class="circle-verdict" data-verdict>The injury has no name because it left no mark. It is still happening now.</p>
+    </section>
+
+
+    <!-- ================================================================
+         CIRCLE 8 — FRAUD: MANIPULATION (six concurrent mechanics)
+         ================================================================ -->
+    <section id="circle-8" class="circle circle--fraud" aria-labelledby="circle-8-heading">
+      <h3 id="circle-8-heading" class="circle-title">Circle 8 &mdash; Fraud</h3>
+      <p class="circle-subtitle">Manipulation</p>
+
+      <div class="circle-content">
+
+        <!-- Mechanic 1: Countdown timer + extension notice -->
+        <div class="fraud-countdown-wrap">
+          <p>This offer expires in</p>
+          <p class="fraud-countdown" aria-live="off">14:37</p>
+          <p class="fraud-countdown-extension">&#9888; OFFER EXTENDED due to OVERWHELMING DEMAND &mdash; New deadline: 14:37</p>
+        </div>
+
+        <!-- Hero pitch -->
+        <div class="fraud-pitch">
+          <h4>This Simple Method Changed Everything.</h4>
+          <p class="fraud-pitch-sub">Don&rsquo;t miss your chance.</p>
+          <button type="button" class="fraud-cta">YES! I want in.</button>
+        </div>
+
+        <!-- Mechanic 3: Scarcity signals -->
+        <ul class="fraud-scarcity">
+          <li>ONLY 3 SPOTS REMAINING IN YOUR AREA</li>
+          <li>17 people have viewed this offer in the last hour</li>
+          <li>This price expires when this page closes</li>
+          <li>Your personalized discount expires in: <span class="fraud-countdown-mirror">14:37</span></li>
+        </ul>
+
+        <!-- Mechanic 2: Social proof ticker -->
+        <div class="fraud-social-proof-wrap">
+          <h5>Live Activity</h5>
+          <ul class="fraud-social-proof"></ul>
+        </div>
+
+        <!-- Mechanic 4: Testimonials -->
+        <section class="fraud-testimonials">
+          <h5>What REAL PEOPLE Are Saying <span class="fraud-verified">(VERIFIED PURCHASERS &check;)</span></h5>
+
+          <article class="fraud-testimonial">
+            <div class="fraud-stars" aria-label="Five out of five stars">★★★★★</div>
+            <blockquote>It was honestly the best money I have ever spent in my entire life. My family cannot believe the transformation. I now own seven boats.</blockquote>
+            <cite>&mdash; Robert C., Entrepreneur, Florida</cite>
+          </article>
+
+          <article class="fraud-testimonial">
+            <div class="fraud-stars" aria-label="Five out of five stars">★★★★★</div>
+            <blockquote>I was skeptical at first because I had been burned by other programs. But after just three weeks, my doctor and my accountant both said the same thing: this works.</blockquote>
+            <cite>&mdash; Margaret L., Retired Teacher, Ohio</cite>
+          </article>
+
+          <article class="fraud-testimonial">
+            <div class="fraud-stars" aria-label="Five out of five stars">★★★★★</div>
+            <blockquote>Three years of regret &mdash; gone. I only wish I had found this sooner. My only regret is not signing up immediately.</blockquote>
+            <cite>&mdash; David T., Small Business Owner, Texas</cite>
+          </article>
+
+          <article class="fraud-testimonial">
+            <div class="fraud-stars" aria-label="Five out of five stars">★★★★★</div>
+            <blockquote>I follow the system exactly as described and the results have been beyond anything I could have imagined. Thank you for changing my life.</blockquote>
+            <cite>&mdash; Jennifer M., Mother of Three, California</cite>
+          </article>
+        </section>
+
+        <!-- Sentinel for exit interception (near bottom) -->
+        <div class="fraud-exit-sentinel" aria-hidden="true"></div>
+
+        <!-- Mechanic 6: Exit interception -->
+        <div class="fraud-exit-intent" role="dialog" aria-labelledby="fraud-exit-title">
+          <div class="fraud-exit-inner">
+            <h5 id="fraud-exit-title">&#9888; WAIT!</h5>
+            <p>Before you go&hellip; we&rsquo;ve prepared a SPECIAL BONUS OFFER exclusively for visitors like you who almost missed out.</p>
+            <p class="fraud-exit-timer">This offer expires in: 09:59</p>
+            <button type="button" class="fraud-cta">Claim Your Bonus</button>
+            <button type="button" class="fraud-exit-decline">No thanks, I don&rsquo;t want to save money</button>
+          </div>
+        </div>
+
+        <!-- Mechanic 5: Automated chat -->
+        <div class="fraud-chat" role="dialog" aria-labelledby="fraud-chat-title">
+          <header class="fraud-chat-header">
+            <span class="fraud-chat-avatar" aria-hidden="true"></span>
+            <span id="fraud-chat-title"><strong>Melissa</strong> &middot; Personal Success Advisor</span>
+            <span class="fraud-chat-status">Online</span>
+          </header>
+          <div class="fraud-chat-log">
+            <div class="fraud-chat-msg fraud-chat-msg--bot">Hi! I&rsquo;m Melissa, your personal success advisor. I noticed you&rsquo;ve been on this page for a little while and I just wanted to reach out personally. &#x1F60A;</div>
+          </div>
+          <form class="fraud-chat-form">
+            <input type="text" class="fraud-chat-input" placeholder="Type a message&hellip;" aria-label="Your message">
+            <button type="submit">Send</button>
+          </form>
+        </div>
+
+      </div>
+
+      <p class="circle-verdict" data-verdict>It was intelligent enough to know exactly what you were worth to it.</p>
+    </section>
+
+
+    <!-- ================================================================
+         CIRCLE 9 — TREACHERY: BETRAYAL
+         ================================================================ -->
+    <section id="circle-9" class="circle circle--treachery" aria-labelledby="circle-9-heading">
+      <h3 id="circle-9-heading" class="circle-title">Circle 9 &mdash; Treachery</h3>
+      <p class="circle-subtitle">Betrayal</p>
+
+      <div class="circle-content">
+
+        <header class="treachery-dashboard-header">
+          <h4>Your account</h4>
+          <p>Welcome back. Here&rsquo;s an overview of everything you&rsquo;ve built with us.</p>
+        </header>
+
+        <!-- Initial visible cards (the user's apparent dashboard). -->
+        <div class="treachery-card-grid">
+
+          <article class="treachery-card treachery-card--posts is-visible">
+            <h5>Posts published</h5>
+            <p class="treachery-stat">2,418</p>
+          </article>
+
+          <article class="treachery-card treachery-card--connections is-visible">
+            <h5>Connections</h5>
+            <p class="treachery-stat">847</p>
+          </article>
+
+          <article class="treachery-card treachery-card--messages is-visible">
+            <h5>Messages</h5>
+            <p class="treachery-stat">12,304</p>
+          </article>
+
+          <article class="treachery-card treachery-card--photos is-visible">
+            <h5>Photos uploaded</h5>
+            <p class="treachery-stat">3,991</p>
+          </article>
+
+        </div>
+
+        <!-- Hidden cards. JS moves these into the visible grid one
+             at a time, slowly, without invitation or announcement. -->
+        <div class="treachery-card-source" hidden>
+
+          <article class="treachery-card treachery-card--years">
+            <h5>Years on the platform</h5>
+            <p class="treachery-stat">11</p>
+          </article>
+
+          <article class="treachery-card treachery-card--professional">
+            <h5>Professional history shared</h5>
+            <p class="treachery-stat">9 positions, 17 years</p>
+          </article>
+
+          <article class="treachery-card treachery-card--creative">
+            <h5>Creative works published</h5>
+            <p class="treachery-stat">163</p>
+          </article>
+
+          <article class="treachery-card treachery-card--family">
+            <h5>Family members tagged</h5>
+            <p class="treachery-stat">14</p>
+          </article>
+
+          <article class="treachery-card treachery-card--locations">
+            <h5>Locations visited</h5>
+            <p class="treachery-stat">387</p>
+          </article>
+
+          <article class="treachery-card treachery-card--minutes">
+            <h5>Minutes spent here</h5>
+            <p class="treachery-stat">418,224</p>
+          </article>
+
+          <article class="treachery-card treachery-card--reactions">
+            <h5>Reactions given</h5>
+            <p class="treachery-stat">52,098</p>
+          </article>
+
+          <article class="treachery-card treachery-card--reactions-received">
+            <h5>Reactions received</h5>
+            <p class="treachery-stat">38,471</p>
+          </article>
+
+          <article class="treachery-card treachery-card--first">
+            <h5>First post</h5>
+            <p class="treachery-stat">June 14, 2014</p>
+          </article>
+
+        </div>
+
+        <!-- Satan: a loading spinner that never resolves OR a progress
+             bar locked at 99%. Both options present in markup; pick
+             one in CSS. -->
+        <div class="treachery-satan" aria-hidden="true">
+          <div class="treachery-spinner"></div>
+          <div class="treachery-progress">
+            <div class="treachery-progress-fill" style="width: 99%;"></div>
+            <p class="treachery-progress-label">99%</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="circle-verdict" data-verdict>You built something real here. That is what made this possible.</p>
+    </section>
+
+
+      <!-- ================================================================
+           THE INVERSION
+
+           Last section of Hell before the pivot. The conceptual moment
+           of inversion. The actual visual flip is the rotation animation
+           driven by the .pivot div below — designer styles this section
+           as the lead-in / atmospheric setup for the flip itself.
+           ================================================================ -->
+      <section id="inversion" class="threshold inversion" aria-label="The Inversion">
+        <p class="sr-only">You are passing through the center of the earth. Below this point, ascent begins.</p>
+        <div class="inversion-visual" aria-hidden="true"></div>
+      </section>
+
+    </section><!-- /.hell -->
+
+
+    <!-- ================================================================
+         THE PIVOT
+
+         Empty zero-height div. Direct child of .wrapper (not owned by
+         either realm). JS reads its offsetTop to compute the rotation
+         origin and translate compensation.
+         ================================================================ -->
+    <div class="pivot" id="pivot"></div>
+
+
+    <!-- ==================================================================
+         II. PURGATORY  +  III. HEAVEN — ASCENT
+
+         DOM order top-to-bottom: Shore first, Empyrean last. Each
+         realm is its own <section> with a heading. Realm sections do
+         not tumble during inversion — only their inner sections do.
+         ================================================================== -->
+
+
+    <!-- ================================================================
+         THE SHORE — entry into Purgatory
+         ================================================================ -->
+    <section id="shore" class="threshold shore" aria-labelledby="shore-heading">
+      <h3 id="shore-heading" class="threshold-title">The Shore</h3>
+
+      <div class="shore-content">
+        <p>After the descent, a shore.</p>
+        <p>No gate, no inscription. The mountain rises from the water in early light &mdash; gray before dawn, the kind of quiet that follows duration. You have been somewhere enclosed for a long time.</p>
+        <p>The water here is not the Acheron. It does not carry you toward punishment. It simply arrives at land.</p>
+        <p>Virgil wipes the grime of Hell from Dante&rsquo;s face with the morning dew. A reed he picks from the sand grows back instantly. This realm operates by different rules. What is taken is returned. What is erased is not lost.</p>
+        <p>Somewhere between the shore and the first terrace, there is an Ante-Purgatory &mdash; the late repentant, those who came to their reckoning at the last possible moment. They wait here without punishment, simply without urgency. There is time now.</p>
+        <p>The mountain has seven terraces. Each one is a problem that was actually worked on.</p>
+        <p class="shore-instruction"><em>Begin to climb.</em></p>
+
+        <!-- The reed. CSS animates a single bend-and-spring. -->
+        <div class="shore-reed" aria-hidden="true"></div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         PURGATORY — wrapper for the seven terraces
+         ================================================================ -->
+    <!-- =================================================================
+         II. PURGATORY — THE WEB AS CONSTRAINT
+         The realm <section> itself does NOT tumble during inversion —
+         its inner sections (terraces, thresholds) do. The realm
+         heading sits at the START of DOM order so it appears at the
+         visual BOTTOM of the realm post-inversion — i.e. the user
+         sees "Purgatory" first as they enter the realm scrolling up
+         from the boundary.
+         ================================================================= -->
+    <section class="purgatory" aria-labelledby="purgatory-heading">
+
+      <h2 id="purgatory-heading" class="realm-heading">Purgatory</h2>
+
+
+      <!-- ============================================================
+           TERRACE 1 — PRIDE: THE LAYOUT PROBLEM
+           Era: ~1991–1997. Rendered in actual nested table layout
+           with font tags and spacer GIFs.
+           ============================================================ -->
+      <section id="terrace-1" class="terrace terrace--1" data-terrace="1" aria-labelledby="terrace-1-heading">
+        <h3 id="terrace-1-heading" class="terrace-title">Terrace 1 &mdash; Pride</h3>
+        <p class="terrace-subtitle">The Layout Problem</p>
+        <p class="terrace-era">Early HTML, ~1991&ndash;1997</p>
+
+        <!-- The actual era: nested tables for layout. font tags for
+             type. Single-pixel transparent spacer GIFs (here, a 1x1
+             SVG data URI) used as structural elements.
+
+             To future readers / AT users: this is intentionally
+             period-accurate. The era's HTML is the medium of the
+             argument. -->
+        <table class="terrace-1-layout" border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <!-- Spacer column on the left -->
+            <td width="40">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/>" width="40" height="1" alt="">
+            </td>
+            <td>
+              <table border="0" cellpadding="6" cellspacing="0" width="100%">
+                <tr>
+                  <td colspan="2">
+                    <font face="Times New Roman" size="6" color="#000000"><b>THE CONSTRAINT</b></font>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='10'/>" width="1" height="10" alt="">
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <font face="Times New Roman" size="3" color="#000000">
+                      There is no CSS.<br><br>
+                      Let that settle for a moment. There is no document object model as you understand it. There is no box model. There is no semantic distinction between presentation and structure. There are tags &mdash; heading tags, paragraph tags, a horizontal rule &mdash; and there is a FONT tag that will do approximately what you need if you nest it correctly, and there are TABLE tags, and if you are clever enough with TABLE tags you can make something that looks, in most browsers, like a layout.<br><br>
+                      Most browsers. The phrase will become important. In 1994 there are perhaps four browsers that matter. They disagree about almost everything.<br><br>
+                      This is the first problem: the page has no inherent spatial logic. Images and text flow together, one after another, like words in a document. But this is not a document. This is a page, and pages have columns and grids and alignment, and none of those things exist yet in any formal sense.<br><br>
+                      The solution, arrived at by necessity and shared between designers who had no common vocabulary for what they were doing, was the table. Not a table for tabular data &mdash; a table as structural skeleton. Nested inside itself at two, three, four levels of depth. Cells stretched with single-pixel transparent GIFs &mdash; spacer GIFs &mdash; because a 1&times;1 pixel image set to a specific width holds space in a way that an empty cell will not.<br><br>
+                      This is not a hack, exactly. It is engineering under constraint. The constraint is complete.<br><br>
+                      What was accomplished inside it was remarkable.
+                    </font>
+                  </td>
+                  <td width="20">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/>" width="20" height="1" alt="">
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2"><hr noshade size="1"></td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <font face="Courier New" size="2" color="#666666">
+                      <b>[ THE CODE BELOW PRODUCED THIS LAYOUT ]</b><br><br>
+                      &lt;table border="0" cellpadding="0" cellspacing="0" width="100%"&gt;<br>
+                      &nbsp;&nbsp;&lt;tr&gt;<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;td width="40"&gt;&lt;img src="spacer.gif" width="40" height="1"&gt;&lt;/td&gt;<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;font face="Times New Roman" size="6"&gt;Heading&lt;/font&gt;<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+                      &nbsp;&nbsp;&lt;/tr&gt;<br>
+                      &lt;/table&gt;<br><br>
+                      Every visual element you see is a table cell.
+                    </font>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+
+      <!-- ============================================================
+           TERRACE 2 — ENVY: THE CONTROL PROBLEM
+           Era: Flash, ~1996–2005. Markup hooks for keyframe motion.
+           Designer attaches CSS keyframe animations to .t2-motion-* —
+           timeline-style, pixel-precise, the Flash aesthetic.
+           ============================================================ -->
+      <section id="terrace-2" class="terrace terrace--2" data-terrace="2" aria-labelledby="terrace-2-heading">
+        <h3 id="terrace-2-heading" class="terrace-title">Terrace 2 &mdash; Envy</h3>
+        <p class="terrace-subtitle">The Control Problem</p>
+        <p class="terrace-era">Flash, ~1996&ndash;2005</p>
+
+        <div class="t2-stage">
+
+          <h4 class="t2-motion t2-motion--heading">THE CONSTRAINT</h4>
+
+          <p class="t2-motion t2-motion--p1">In 1999, there was a way to make the web behave like anything you could imagine.</p>
+
+          <p class="t2-motion t2-motion--p2">You could define a timeline. You could place objects at specific coordinates &mdash; not approximately, not depending on the browser&rsquo;s interpretation of your intent, but precisely. You could animate along that timeline, with easing curves, with sound, with video. You could use any typeface you owned. You could make the browser do things the browser had never been designed to do.</p>
+
+          <p class="t2-motion t2-motion--p3">This was Flash. It was beautiful. It was also a walled garden.</p>
+
+          <p class="t2-motion t2-motion--p4">The web outside Flash was open: any browser could read it, any search engine could index it, any screen reader could parse it, any device with a standards-compliant renderer could display it. Flash was none of these things. Flash was a plugin &mdash; a piece of software your browser trusted to do whatever it was asked inside a rectangle on the page. Screen readers could not enter that rectangle. Search engines could not enter that rectangle. Mobile devices, in the years when they mattered, could not run it at all.</p>
+
+          <p class="t2-motion t2-motion--p5">Some designers knew this and accepted the trade. Some designers knew this and thought the trade was worth it. Some designers did not know this, because the tools did not make it visible.</p>
+
+          <div class="t2-irony">
+            <p class="t2-irony-line">You are viewing this in a browser that does not support Flash.</p>
+            <p class="t2-irony-line">You are viewing this in a browser that ended Flash.</p>
+            <p class="t2-irony-line">It was right to end it.</p>
+            <p class="t2-irony-line">The work was still beautiful.</p>
+          </div>
+
+          <!-- Placeholder for designer to add genuine Flash-era work
+               recreation (pixel-precise animation, etc). -->
+          <div class="t2-flash-recreation" aria-hidden="true"></div>
+
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           TERRACE 3 — ANGER: THE CONSISTENCY PROBLEM
+           Era: CSS Wars, ~1998–2007. Two-pane browser comparison —
+           "intended" rendering vs IE6 broken rendering side by side.
+           CSS hacks visible as inline annotations / marginalia.
+           ============================================================ -->
+      <section id="terrace-3" class="terrace terrace--3" data-terrace="3" aria-labelledby="terrace-3-heading">
+        <h3 id="terrace-3-heading" class="terrace-title">Terrace 3 &mdash; Anger</h3>
+        <p class="terrace-subtitle">The Consistency Problem</p>
+        <p class="terrace-era">CSS Wars, ~1998&ndash;2007</p>
+
+        <header class="t3-report-header">
+          <h4>BROWSER COMPATIBILITY REPORT &mdash; INTERNAL DOCUMENT</h4>
+          <p><strong>Status:</strong> Unresolved</p>
+          <p><em>Filed by: Every designer working in 2002</em></p>
+        </header>
+
+        <!-- Two browser views side by side -->
+        <div class="t3-comparison">
+
+          <article class="t3-browser-view t3-browser-view--intended" aria-label="Intended rendering">
+            <header class="t3-browser-chrome">
+              <p>Standards-compliant browser</p>
+            </header>
+            <div class="t3-browser-content">
+              <h5>The Box Model</h5>
+              <div class="t3-box-demo t3-box-demo--correct">
+                <p>Width: 200px</p>
+                <p>Padding: 10px</p>
+                <p>Total: 220px</p>
+              </div>
+              <p>The declared width refers to the content area only. Padding and border are added externally. This is the W3C specification.</p>
+            </div>
+          </article>
+
+          <article class="t3-browser-view t3-browser-view--broken" aria-label="Internet Explorer 5.5 rendering">
+            <header class="t3-browser-chrome">
+              <p>Internet Explorer 5.5</p>
+            </header>
+            <div class="t3-browser-content">
+              <h5>The Box Model</h5>
+              <div class="t3-box-demo t3-box-demo--broken">
+                <p>Width: 200px</p>
+                <p>Padding: 10px</p>
+                <p>Total: 200px</p>
+              </div>
+              <p>The declared width includes padding and border. The same box renders 20 pixels narrower. This is not a small difference. This is the layout breaking.</p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- The hacks, as annotated marginalia -->
+        <section class="t3-hacks">
+          <h5>KNOWN WORKAROUNDS</h5>
+
+          <article class="t3-hack">
+            <h6>The Box Model Hack</h6>
+            <p>Tantek &Ccedil;elik, 2000: exploit a CSS parsing bug in IE to serve different values to IE and standards-compliant browsers simultaneously. The hack works. It requires hiding valid CSS from a browser using another browser&rsquo;s bug. This is the industry standard solution.</p>
+            <pre class="t3-code">div.box {
+  width: 220px; /* IE5.5 sees this */
+  voice-family: "\"}\"";
+  voice-family: inherit;
+  width: 200px; /* standards-compliant browsers see this */
+}
+html&gt;body div.box {
+  width: 200px;
+}</pre>
+          </article>
+
+          <article class="t3-hack">
+            <h6>Float Clearing</h6>
+            <p>When floated elements overflow their container, the container collapses to zero height. The fix involves inserting an element after the floats and applying <code>clear: both</code>. Alternatively: apply <code>overflow: hidden</code> to the container, which clears floats as a side effect of a property that has nothing to do with floats. This is also the industry standard solution.</p>
+          </article>
+
+          <article class="t3-hack">
+            <h6>Conditional Comments</h6>
+            <p>Microsoft Internet Explorer supports a comment syntax that only IE can read. Use this to serve IE-specific stylesheets that undo what the standard stylesheet does. This is the third industry standard solution.</p>
+            <pre class="t3-code">&lt;!--[if IE]&gt;
+  &lt;link rel="stylesheet" href="ie-only.css"&gt;
+&lt;![endif]--&gt;</pre>
+          </article>
+        </section>
+
+        <footer class="t3-qa-notes">
+          <h5>NOTES FROM QA</h5>
+          <p>The designers were not doing this wrong.</p>
+          <p>The designers were doing this correctly. The tools were not.</p>
+          <p><em>The anger here is on record. It was righteous.</em></p>
+        </footer>
+      </section>
+
+
+      <!-- ============================================================
+           TERRACE 4 — SLOTH: THE CONVENTION PROBLEM
+           Era: Web 2.0, ~2004–2010. Markup carries the era's div
+           structure — beta badge, glossy buttons, gradient surfaces.
+           Designer adds the gloss in CSS.
+           ============================================================ -->
+      <section id="terrace-4" class="terrace terrace--4" data-terrace="4" aria-labelledby="terrace-4-heading">
+        <h3 id="terrace-4-heading" class="terrace-title">Terrace 4 &mdash; Sloth</h3>
+        <p class="terrace-subtitle">The Convention Problem</p>
+        <p class="terrace-era">Web 2.0, ~2004&ndash;2010</p>
+
+        <div class="t4-page">
+
+          <header class="t4-header">
+            <p class="t4-logo">webwerks <span class="t4-beta-badge">BETA</span></p>
+          </header>
+
+          <main class="t4-main">
+
+            <section class="t4-hero">
+              <h4>Everything here is new.</h4>
+              <p>We&rsquo;ve rebuilt this from the ground up to give you a better experience.</p>
+              <button type="button" class="t4-button">Get started &rsaquo;</button>
+            </section>
+
+            <section class="t4-body">
+              <p>The rounded corners are there because they&rsquo;re friendly. The gradient goes from slightly lighter at the top to slightly darker at the bottom because light comes from above and objects have volume and this is how objects that have volume appear. The blue is trustworthy. The sans-serif is clean. The white space is generous. The icons are from a set &mdash; consistent across the page, consistent with what you have seen before on pages like this one.</p>
+
+              <p>This is the correct way to build a website in 2006.</p>
+
+              <p>Not the only way. The correct way.</p>
+
+              <h5>Why does everything look like this?</h5>
+
+              <p>Not because it had to. The tools by 2006 are good enough to do something else. CSS is functional &mdash; still imperfect, still requiring workarounds, but functional enough to build almost anything you can imagine. The constraints of the table era are not the constraints of this era. The options are genuinely open.</p>
+
+              <p>And yet.</p>
+
+              <p>The gradient is there because it is correct. The rounded corners are there because they are correct. The star-shaped ratings widget, the folded-corner effect on the blog post thumbnail, the shiny button with the highlight at the top &mdash; these are correct. They are what a website is in 2006.</p>
+
+              <p>Comfort is a constraint too. It is perhaps the most durable of the constraints &mdash; it asks nothing of you, requires no workaround, breaks in no browser. It simply settles.</p>
+
+              <p>You found this page comfortable the moment you arrived. Before you read anything. Before you understood what it was.</p>
+
+              <p class="t4-question"><strong>Why?</strong></p>
+            </section>
+
+          </main>
+
+          <footer class="t4-footer">
+            <p>&copy; 2006 webwerks. All rights reserved.</p>
+          </footer>
+
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           TERRACE 5 — AVARICE: THE SCALE PROBLEM
+           Era: Framework Age, ~2010–2016. Built on Bootstrap 3.3.7.
+           The terrace about frameworks is itself a framework.
+           Bootstrap CSS is loaded in <head>.
+           ============================================================ -->
+      <section id="terrace-5" class="terrace terrace--5" data-terrace="5" aria-labelledby="terrace-5-heading">
+        <h3 id="terrace-5-heading" class="terrace-title">Terrace 5 &mdash; Avarice</h3>
+        <p class="terrace-subtitle">The Scale Problem</p>
+        <p class="terrace-era">Framework Age, ~2010&ndash;2016</p>
+
+        <!-- Bootstrap 3 .container, .row, .col-md-* — the genuine
+             era markup. -->
+        <div class="container">
+          <div class="row">
+
+            <div class="col-md-8">
+              <h4>Introducing Bootstrap</h4>
+              <p class="lead">A sleek, intuitive, and powerful front-end framework for faster and easier web development.</p>
+
+              <p>Bootstrap was released by Twitter in 2011. Within two years it was the most starred project on GitHub. The 12-column grid it established became the implicit default &mdash; the assumed structure underlying almost every site built during this period. Not because Twitter mandated it. Because it was there, it worked, and it was already installed.</p>
+
+              <h5>What it gave you:</h5>
+              <p>A responsive grid before responsive was easy. Consistent button styles across browsers. A dropdown component that worked the first time. A navbar that collapsed on mobile before you had to think about mobile. Accessibility defaults baked into components you were going to build anyway. Documentation. A community. Answers on Stack Overflow.</p>
+
+              <h5>What it took:</h5>
+              <p>The moment when a site felt like someone made it. The particular decision, the unexplainable choice, the element that doesn&rsquo;t belong in a grid but belongs on this page. Design by a person, for a reason.</p>
+
+              <p>The framework did not mandate these trades. The framework was a choice. The choice calcified into an assumption &mdash; and the assumption, once invisible, began to make choices of its own.</p>
+
+              <p><em>This page is built on Bootstrap 3.3.7.</em></p>
+              <p><em>You knew that before you read it.</em></p>
+            </div>
+
+            <div class="col-md-4">
+              <ul class="nav nav-pills nav-stacked">
+                <li role="presentation"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">About</a></li>
+                <li role="presentation"><a href="#">Blog</a></li>
+                <li role="presentation"><a href="#">Contact</a></li>
+              </ul>
+              <hr>
+              <p class="text-muted"><small>Made with Bootstrap.</small></p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           TERRACE 6 — GLUTTONY: THE DEVICE PROBLEM
+           Era: Responsive, ~2014–2020. JS sets data-viewport-state on
+           the section based on window width; CSS uses this to drive
+           exaggerated breakpoint behavior.
+           ============================================================ -->
+      <section id="terrace-6" class="terrace terrace--6" data-terrace="6" aria-labelledby="terrace-6-heading">
+        <h3 id="terrace-6-heading" class="terrace-title">Terrace 6 &mdash; Gluttony</h3>
+        <p class="terrace-subtitle">The Device Problem</p>
+        <p class="terrace-era">Responsive Era, ~2014&ndash;2020</p>
+
+        <!-- Three layout-state versions of the same content. CSS
+             shows/hides based on data-viewport-state. -->
+        <div class="t6-content">
+
+          <p class="t6-line t6-line--full">This text was designed for every screen simultaneously.</p>
+
+          <p class="t6-line t6-line--full">Fluid grids &mdash; elements that resize proportionally rather than snapping to fixed widths. Breakpoints &mdash; the specific pixel widths at which a layout reorganizes itself. Media queries &mdash; the CSS rule that makes breakpoints possible, asking the browser: how wide are you right now? Images that resize without distortion. Type that scales. Navigation that collapses.</p>
+
+          <p class="t6-line t6-line--full">This was a genuine problem with a genuine solution. The proliferation of screen sizes in the early 2010s made fixed-width design increasingly incoherent. A site built for 960 pixels wide looks wrong on a phone and cramped on a widescreen monitor. Responsive design was the answer.</p>
+
+          <p class="t6-line t6-line--full">But designing for every screen simultaneously is also designing for no screen in particular.</p>
+
+          <p class="t6-line t6-line--full">A fixed-width site is wrong on half of all devices and exactly right on a specific rectangle of glass that someone is holding. A responsive site is approximately right everywhere, by design. The specific rectangle disappears. The place disappears.</p>
+
+          <p class="t6-line t6-line--tablet">You are reading this wherever you are.</p>
+
+          <p class="t6-line t6-line--tablet">The content never ends. The scroll continues past what you came for, into related articles, into recommended content, into the region of the page that was generated for people who scroll this far, of which you are now one.</p>
+
+          <p class="t6-line t6-line--mobile">You are reading this wherever you are.</p>
+
+          <p class="t6-line t6-line--mobile-emphasized"><strong>Scroll.</strong></p>
+
+          <!-- Infinite scroll demonstration: repeated content blocks
+               that the user can scroll through. The terrace about
+               infinite scroll uses it. -->
+          <div class="t6-infinite">
+            <p>Related: You may also like.</p>
+            <p>Related: You may also like.</p>
+            <p>Related: You may also like.</p>
+            <p>Related: You may also like.</p>
+            <p>Related: You may also like.</p>
+            <p>Related: You may also like.</p>
+            <p>Related: You may also like.</p>
+            <p>Related: You may also like.</p>
+            <p>Related: You may also like.</p>
+            <p>Related: You may also like.</p>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           TERRACE 7 — LUST: THE ATTENTION PROBLEM
+           Era: ~2018–present. Optimization log + mirror observation
+           layer. JS calculates real client-side facts about user
+           behavior and renders them as log-style entries.
+           ============================================================ -->
+      <section id="terrace-7" class="terrace terrace--7" data-terrace="7" aria-labelledby="terrace-7-heading">
+        <h3 id="terrace-7-heading" class="terrace-title">Terrace 7 &mdash; Lust</h3>
+        <p class="terrace-subtitle">The Attention Problem</p>
+        <p class="terrace-era">~2018&ndash;present</p>
+
+        <header class="t7-log-header">
+          <h4>OPTIMIZATION LOG &mdash; PRODUCT &mdash; ENGAGEMENT</h4>
+        </header>
+
+        <ol class="t7-log">
+
+          <li class="log-entry" data-entry="001">
+            <h5>Entry 001</h5>
+            <p>Button color updated: blue &rarr; orange.</p>
+            <p>CTR: <strong>+18%</strong>.</p>
+          </li>
+
+          <li class="log-entry" data-entry="002">
+            <h5>Entry 002</h5>
+            <p>Notification send time adjusted: 9:00am &rarr; 7:43pm.</p>
+            <p>Open rate: <strong>+31%</strong>.</p>
+            <p class="log-rationale">Rationale: users more likely to engage in the hour before sleep.</p>
+          </li>
+
+          <li class="log-entry" data-entry="003">
+            <h5>Entry 003</h5>
+            <p>Image placement shifted above the fold.</p>
+            <p>Dwell time: <strong>+2.4 minutes</strong>.</p>
+            <p>Scroll depth: <strong>+34%</strong>.</p>
+          </li>
+
+          <li class="log-entry" data-entry="004">
+            <h5>Entry 004</h5>
+            <p>Like count made visible to post author in real time.</p>
+            <p>Post frequency: <strong>+22%</strong>.</p>
+            <p>Average session length: <strong>+8 minutes</strong>.</p>
+          </li>
+
+          <li class="log-entry" data-entry="005">
+            <h5>Entry 005</h5>
+            <p>Autoplay enabled for video content in feed.</p>
+            <p>Watch time: <strong>+41%</strong>.</p>
+            <p class="log-rationale">Note: volume default remains muted. Captions enabled automatically.</p>
+          </li>
+
+          <li class="log-entry" data-entry="006">
+            <h5>Entry 006</h5>
+            <p>Unsubscribe link moved from email header to footer.</p>
+            <p>Unsubscribe rate: <strong>&minus;27%</strong>.</p>
+            <p>Resubscribe rate: unchanged.</p>
+          </li>
+
+          <li class="log-entry" data-entry="007">
+            <h5>Entry 007</h5>
+            <p>Notification badge introduced on app icon.</p>
+            <p>Daily active users: <strong>+12%</strong>.</p>
+            <p class="log-rationale">Note: badge reflects unread count. Content mix unchanged.</p>
+          </li>
+
+          <li class="log-entry" data-entry="008">
+            <h5>Entry 008</h5>
+            <p>Crisis support resource repositioned: moved from tertiary footer to inline card triggered by keyword detection.</p>
+            <p>Engagement with resource: <strong>+340%</strong>.</p>
+          </li>
+
+          <li class="log-entry" data-entry="009">
+            <h5>Entry 009</h5>
+            <p>Onboarding friction reduced: removed three confirmation steps.</p>
+            <p>Completion rate: <strong>+55%</strong>.</p>
+            <p>Day 7 retention: <strong>+18%</strong>.</p>
+          </li>
+
+          <li class="log-entry log-entry--question" data-entry="010">
+            <h5>Entry 010</h5>
+            <p><em>What does this optimize for?</em></p>
+          </li>
+
+          <li class="log-entry" data-entry="011">
+            <h5>Entry 011</h5>
+            <p>Feed ranking updated: content with higher comment velocity weighted +15%.</p>
+            <p>Average time before first comment: <strong>&minus;4.2 minutes</strong>.</p>
+            <p class="log-rationale">Note: comment quality not a ranking input.</p>
+          </li>
+
+          <li class="log-entry" data-entry="012">
+            <h5>Entry 012</h5>
+            <p>Profile completion prompt reintroduced after 6-month absence.</p>
+            <p>Users who completed profile: <strong>+9%</strong>.</p>
+            <p>Average connection count post-completion: <strong>+31%</strong>.</p>
+          </li>
+
+          <li class="log-entry" data-entry="013">
+            <h5>Entry 013</h5>
+            <p>Notification timing for medication reminder feature adjusted to match high-engagement window identified in Entry 002.</p>
+            <p>Adherence rate in study group: <strong>+22%</strong>.</p>
+          </li>
+
+          <li class="log-entry" data-entry="014">
+            <h5>Entry 014</h5>
+            <p>Variable reward timing introduced: content load delay randomized between 0.3 and 1.2 seconds.</p>
+            <p>Return visit rate: <strong>+17%</strong>.</p>
+          </li>
+
+          <li class="log-entry" data-entry="015">
+            <h5>Entry 015</h5>
+            <p>Feature sunset: RSS feed support removed.</p>
+            <p class="log-rationale">Rationale: &lt;1% of users accessing via RSS.</p>
+            <p class="log-rationale">Internal note: RSS users generate 0% ad revenue.</p>
+          </li>
+
+          <li class="log-entry log-entry--reflection" data-entry="016">
+            <h5>Entry 016</h5>
+            <p>The same heatmap that buried the unsubscribe button also made the crisis helpline number more visible.</p>
+            <p>The same notification timing that created anxiety loops also helped people remember their medication.</p>
+            <p>The tool is indifferent. The intent is often invisible.</p>
+            <p>In many cases there was no intent &mdash; only the result.</p>
+          </li>
+
+        </ol>
+
+        <p class="t7-log-end"><em>[End of visible log.]</em></p>
+        <p class="t7-log-continues"><em>The log continues.</em></p>
+
+        <!-- The mirror observation layer.
+             JS populates with real client-side facts about the user's
+             behavior in this very section. -->
+        <aside class="terrace-7-mirror" aria-live="polite" aria-label="Observed activity">
+          <!-- Populated by JS. -->
+        </aside>
+
+      </section>
+
+
+      <!-- ============================================================
+           THE WALL OF FIRE — exit from Purgatory
+           ============================================================ -->
+      <section id="wall-of-fire" class="threshold wall-of-fire" aria-labelledby="wall-heading">
+        <h3 id="wall-heading" class="threshold-title">The Wall of Fire</h3>
+
+        <div class="wall-content">
+
+          <p>The wall is not large. It is exactly as wide as the path.</p>
+          <p>You can see through it. On the other side: a garden, open sky, the summit.</p>
+          <p>This is the last thing Purgatory asks of you: to walk through fire you can see will end. Not blind faith &mdash; you have the evidence. The fire is finite. The garden is visible. And still it asks you to move, deliberately, of your own will, into something that will be briefly uncomfortable before it is over.</p>
+          <p>That is the distinction. The difference between this friction and Hell&rsquo;s is not what it costs you &mdash; it may cost the same &mdash; but what it is for. Hell&rsquo;s obstacles existed to make you give up or give in. This one exists so you can be sure you chose to pass through.</p>
+
+          <!-- Red placeholder div for the fire visual. Designer
+               replaces with the chosen image / animation. -->
+          <div class="wall-fire-placeholder" aria-hidden="true" style="background:#c0392b;"></div>
+
+          <!-- The hold mechanic.
+               Pointer (mouse/touch/pen) press-and-hold for 3 seconds.
+               Keyboard equivalent: Space or Enter held for 3 seconds. -->
+          <div class="wall-of-fire-control">
+            <button type="button" class="hold-button" aria-describedby="hold-instructions">
+              <span class="hold-button-label">Walk through.</span>
+              <span class="hold-progress" aria-hidden="true"></span>
+            </button>
+            <p id="hold-instructions" class="hold-instructions">Press and hold to pass through. Or hold the Space or Enter key while this button is focused.</p>
+            <p class="hold-live sr-only" aria-live="polite"></p>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           EARTHLY PARADISE — interstitial after Wall of Fire
+           ============================================================ -->
+      <section id="earthly-paradise" class="threshold earthly-paradise" aria-labelledby="ep-heading">
+        <h3 id="ep-heading" class="threshold-title">The Earthly Paradise</h3>
+
+        <div class="ep-content">
+          <p>On the other side: the Earthly Paradise. The garden at the summit, before the spheres begin.</p>
+          <p>This is the web before the metrics. Before the conversion funnel, before the engagement rate, before anyone measured what you did with your time and used the measurement to ask for more of it. The handmade homepage. The GeoCities page that loaded in forty seconds and was worth every one of them. The web that a person made, for no reason the data could explain, because they wanted to.</p>
+          <p>Virgil disappears here, without ceremony. Reason has brought you as far as reason can.</p>
+          <p class="ep-coda"><em>What comes next is not navigated. It is perceived.</em></p>
+        </div>
+      </section>
+
+    </section><!-- /.purgatory -->
+
+
+    <!-- ================================================================
+         THE PERCEPTUAL TRANSFORMATION — entry into Heaven
+         No JS. The visual shift is the designer's. The user does not
+         notice when they cross.
+         ================================================================ -->
+    <section id="perceptual-transformation" class="threshold perceptual-transformation" aria-hidden="true">
+      <div class="pt-visual"></div>
+    </section>
+
+
+    <!-- ================================================================
+         HEAVEN — the nine spheres
+         ================================================================ -->
+    <!-- =================================================================
+         III. HEAVEN — THE WEB AS GIFT
+         Like .purgatory, the realm <section> does not tumble during
+         inversion — its inner sections do. The realm heading sits at
+         the START of DOM order so it appears at the visual BOTTOM of
+         the realm post-inversion — the user sees "Heaven" first as
+         they ascend into it from below.
+         ================================================================= -->
+    <section class="heaven" aria-labelledby="heaven-heading">
+
+      <h2 id="heaven-heading" class="realm-heading">Heaven</h2>
+
+
+      <!-- SPHERE 1 — THE MOON: THE DEMOCRATIC WEB -->
+      <section id="sphere-1" class="sphere sphere--1" data-sphere="1" aria-labelledby="sphere-1-heading">
+        <h3 id="sphere-1-heading" class="sphere-title">Sphere 1 &mdash; The Moon</h3>
+        <p class="sphere-subtitle">The Democratic Web</p>
+
+        <article class="sphere-fragment">
+          <p>Anyone. This was the word that mattered.</p>
+          <p>Not anyone with a printing press, anyone with a broadcast license, anyone with a publisher, anyone with an editor, anyone with a masthead and a distribution network.</p>
+          <p>Anyone.</p>
+          <p>In 1995 a person could build a page. Not a page in a newspaper. Not a page in a directory. A page &mdash; their page &mdash; on a medium that had no center and therefore no periphery, no masthead and therefore no gate, no gatekeepers and therefore no one to keep you out.</p>
+          <p>The page was often garish. The page was often earnest. The page was often about things that no editor would have approved &mdash; the particular fandom, the personal grief, the collection of links that only made sense to one person&rsquo;s mind.</p>
+          <p>The garish was the point. The earnest was the point.</p>
+          <p>Anyone could make a page and anyone could see it, and those two facts together had never been true before &mdash; for anything, ever.</p>
+        </article>
+      </section>
+
+
+      <!-- SPHERE 2 — MERCURY: THE INFORMATIONAL WEB -->
+      <section id="sphere-2" class="sphere sphere--2" data-sphere="2" aria-labelledby="sphere-2-heading">
+        <h3 id="sphere-2-heading" class="sphere-title">Sphere 2 &mdash; Mercury</h3>
+        <p class="sphere-subtitle">The Informational Web</p>
+
+        <article class="sphere-fragment">
+          <p>Imagine a world in which every single person on the planet is given free access to the sum of all human knowledge.</p>
+          <p>That&rsquo;s what we&rsquo;re doing.</p>
+          <p>Not a version of all human knowledge curated by an institution. Not a version vetted by a single editorial tradition. A version written by everyone who knew something, corrected by everyone who knew better, maintained by everyone who believed it should exist.</p>
+          <p>The encyclopedia dream was always this: not one book, but the principle of the book applied to everything. Cross-referenced. Living. Correctable. Not finished, because knowledge is not finished.</p>
+          <p>This sphere does not answer what it would actually mean if this worked. If every person on earth had genuine access to everything any other person had thought to write down.</p>
+          <p>That question is still open.</p>
+        </article>
+      </section>
+
+
+      <!-- SPHERE 3 — VENUS: THE SOCIAL WEB -->
+      <section id="sphere-3" class="sphere sphere--3" data-sphere="3" aria-labelledby="sphere-3-heading">
+        <h3 id="sphere-3-heading" class="sphere-title">Sphere 3 &mdash; Venus</h3>
+        <p class="sphere-subtitle">The Social Web</p>
+
+        <article class="sphere-fragment">
+          <p>You knew them by their handle first.</p>
+          <p>Before their name, before their face, before any of the information that the later web would require you to provide as proof of personhood &mdash; before all of that, there was a handle. A chosen name for a chosen self. And around that self: a signature, a set of fandoms, a list of links to other people&rsquo;s pages, a particular way of writing.</p>
+          <p>The community had in-jokes you learned by being there long enough. It had a texture &mdash; the specific texture of people who had found each other across geography because they were looking for the same thing, and the web was briefly the only place that thing existed.</p>
+          <p>This was before scale became the point.</p>
+          <p>This sphere is not an elegy. It is a record of what intimacy at scale felt like, before scale was all there was.</p>
+        </article>
+      </section>
+
+
+      <!-- SPHERE 4 — THE SUN: THE OPEN WEB -->
+      <section id="sphere-4" class="sphere sphere--4" data-sphere="4" aria-labelledby="sphere-4-heading">
+        <h3 id="sphere-4-heading" class="sphere-title">Sphere 4 &mdash; The Sun</h3>
+        <p class="sphere-subtitle">The Open Web</p>
+
+        <article class="sphere-fragment">
+          <p>This is for everyone.</p>
+          <p>Not for everyone who registers. Not for everyone who agrees to the terms. Not for everyone who uses the approved client or the approved device. For everyone. As a fact of its architecture.</p>
+          <p>The web I imagined was a medium that no one owned &mdash; built on protocols that any implementation could speak, readable by any device that understood them, writable by anyone who learned the language. Not free as in no cost. Free as in no permission required. Free as in the road, which any vehicle can use, which belongs to no vehicle.</p>
+          <p>What I did not anticipate was that you could build a private tollway on top of the road and call it a destination.</p>
+          <p>The road is still there.</p>
+          <p>The road is still free.</p>
+          <cite>&mdash; Tim Berners-Lee, 1989</cite>
+        </article>
+      </section>
+
+
+      <!-- SPHERE 5 — MARS: THE CREATIVE WEB -->
+      <section id="sphere-5" class="sphere sphere--5" data-sphere="5" aria-labelledby="sphere-5-heading">
+        <h3 id="sphere-5-heading" class="sphere-title">Sphere 5 &mdash; Mars</h3>
+        <p class="sphere-subtitle">The Creative Web</p>
+
+        <article class="sphere-fragment">
+          <p>JODI made a website in 1994 that looked broken.</p>
+          <p>It was not broken. It was a work of art about the experience of the web &mdash; the error messages, the source code visible when something failed, the browser as a medium with its own language and its own failures. They made the machinery visible and called it a canvas.</p>
+          <p>Olia Lialina made a love story in hypertext in 1996 that could only be told in hypertext &mdash; where clicking was grief, and navigation was longing, and the fact that you could leave at any moment was part of what it meant that you stayed.</p>
+          <p>Young-Hae Chang Heavy Industries made text flash at you in time to music at a speed that forced you to read their way or not at all.</p>
+          <p>These were not websites about art. They were art about websites &mdash; made for a medium that had never existed before and therefore had never been used before. The properties of the medium were the material: the link, the error, the load time, the cursor, the scroll.</p>
+          <p>This sphere is not a representation of net art.</p>
+          <p><strong>This sphere is net art.</strong></p>
+        </article>
+      </section>
+
+
+      <!-- SPHERE 6 — JUPITER: THE ACCESSIBLE WEB
+           AAA semantic baseline. Maximum legibility hooks. -->
+      <section id="sphere-6" class="sphere sphere--6" data-sphere="6" aria-labelledby="sphere-6-heading">
+        <h3 id="sphere-6-heading" class="sphere-title">Sphere 6 &mdash; Jupiter</h3>
+        <p class="sphere-subtitle">The Accessible Web</p>
+
+        <article class="sphere-fragment">
+          <p>The web is for everyone.</p>
+          <p>Not as a slogan. As a specification. The markup language was designed so that a screen reader could parse it, so that a user who cannot use a mouse could navigate it with a keyboard, so that a person on a slow connection could receive it without the decorative parts, so that a person with a visual impairment could receive a text description of what others see.</p>
+          <p>The tools existed from the beginning. The will to use them was inconsistent.</p>
+          <p>This sphere practices what it describes. The experience of a screen reader user here is equal to the experience of a sighted user &mdash; not a degraded alternative, not an afterthought, not an aria-label added at the end. Equal.</p>
+          <p>The vision was not achieved. That is not an argument against the vision. It is an argument for it: the idealism was right, and the falling short was not inevitable. Someone decided not to. Someone can decide otherwise.</p>
+          <p>The web this sphere describes still does not fully exist. That is why it belongs in Heaven.</p>
+        </article>
+      </section>
+
+
+      <!-- SPHERE 7 — SATURN: THE INDIE WEB -->
+      <section id="sphere-7" class="sphere sphere--7" data-sphere="7" aria-labelledby="sphere-7-heading">
+        <h3 id="sphere-7-heading" class="sphere-title">Sphere 7 &mdash; Saturn</h3>
+        <p class="sphere-subtitle">The Indie Web</p>
+
+        <article class="sphere-fragment">
+          <p>Own your domain.</p>
+          <p>Not the platform&rsquo;s domain. Not the subdomain they assigned you when you signed up. Your domain &mdash; the address that is yours because you chose it and paid for it and no company&rsquo;s decision to pivot or shut down or get acquired can take it from you.</p>
+          <p>Publish to your own site. Syndicate everywhere else. Let your words and your photos and your thoughts live on infrastructure you control, in formats you own, that do not depend on any company&rsquo;s continued existence or good intentions.</p>
+          <p>This is not utopian. This is not a vision of the web that was &mdash; it never quite was. It is a vision of the web that can still be, practiced now, by people who noticed what was being lost and decided not to lose it.</p>
+          <p>It is smaller than the web most people use. It is quieter. It does not have an algorithm.</p>
+          <p>The people on it know your name because they chose to.</p>
+        </article>
+      </section>
+
+
+      <!-- SPHERE 8 — THE FIXED STARS: THE WEB AS COMMONS -->
+      <section id="sphere-8" class="sphere sphere--8" data-sphere="8" aria-labelledby="sphere-8-heading">
+        <h3 id="sphere-8-heading" class="sphere-title">Sphere 8 &mdash; The Fixed Stars</h3>
+        <p class="sphere-subtitle">The Web as Commons</p>
+
+        <article class="sphere-fragment">
+          <p>The Internet Archive has been preserving the web since 1996.</p>
+          <p>Not because anyone asked them to. Not because anyone paid them to preserve it, specifically. Because someone understood that digital things disappear &mdash; not slowly, the way stone erodes, but suddenly, without announcement, when a server is shut down or a company folds or a format becomes unreadable.</p>
+          <p>The Archive is a commons in the technical sense: a shared resource maintained collectively, whose value belongs to everyone who contributed to it and everyone who will use it. Its value is not in any single item it holds. Its value is in the principle it embodies &mdash; that the record of what we made deserves to exist past the moment of its making.</p>
+          <p>Open source code. Creative Commons licenses. The Wayback Machine. These are not products. They are agreements: an agreement that some things should belong to everyone who needs them, that the cost of enclosing them is greater than the cost of maintaining them, that the web&rsquo;s value was never in any platform but in the whole.</p>
+          <p>The whole still exists. It requires maintenance.</p>
+        </article>
+      </section>
+
+
+      <!-- SPHERE 9 — THE PRIMUM MOBILE: THE SEMANTIC WEB -->
+      <section id="sphere-9" class="sphere sphere--9" data-sphere="9" aria-labelledby="sphere-9-heading">
+        <h3 id="sphere-9-heading" class="sphere-title">Sphere 9 &mdash; The Primum Mobile</h3>
+        <p class="sphere-subtitle">The Semantic Web</p>
+
+        <article class="sphere-fragment">
+          <p>I have a dream for the Web.</p>
+          <p>It is a web in which computers become capable of analyzing all the data on the Web &mdash; the content, the links, the transactions between people and computers. A Semantic Web that makes this possible has yet to emerge, but when it does, the day-to-day mechanisms of trade, bureaucracy, and our daily lives will be handled by machines talking to machines.</p>
+          <p>The vision requires that data be given meaning &mdash; not just structure, but meaning. That a machine encountering a word could know what it referred to in context. That the relationships between facts were as machine-readable as the facts themselves. That the web could reason about what it contained.</p>
+          <p>It was technically possible. It remained technically difficult. The effort required collective action, and collective action requires collective will, and collective will requires that enough people believe it matters.</p>
+          <p>This sphere believes it matters.</p>
+        </article>
+
+        <!-- The knowledge graph: nodes connected, labels absent. -->
+        <div class="sphere-9-graph" aria-hidden="true">
+          <div class="graph-node graph-node--1"></div>
+          <div class="graph-node graph-node--2"></div>
+          <div class="graph-node graph-node--3"></div>
+          <div class="graph-node graph-node--4"></div>
+          <div class="graph-node graph-node--5"></div>
+          <div class="graph-node graph-node--6"></div>
+          <div class="graph-node graph-node--7"></div>
+          <!-- Edges (lines between nodes) — designer adds via SVG
+               or CSS pseudo-elements as desired. -->
+        </div>
+
+        <p class="sphere-9-coda"><em>We are still waiting for the meaning to arrive.</em></p>
+      </section>
+
+    </section><!-- /.heaven -->
+
+
+    <!-- ================================================================
+         THE EMPYREAN — end of Heaven, end of the project
+         (LAST in DOM order; renders at the TOP of the visual stack)
+         ================================================================ -->
+    <section id="empyrean" class="threshold empyrean" aria-labelledby="empyrean-heading">
+      <h3 id="empyrean-heading" class="threshold-title sr-only">The Empyrean</h3>
+
+      <div class="empyrean-content">
+
+        <p>The web that does not exist yet.</p>
+
+        <p>This is the only moment in the project that is not about the past. Everything before this was a record &mdash; of what was done to you, of what was possible, of what was aspired to. This is the record of what has not been written yet.</p>
+
+        <p>There is no sphere here. No orbit, no organizing principle, no era it belongs to.</p>
+
+        <p>The most honest thing that can be offered at the edge of an unrealized ideal is not a vision of what should come next &mdash; that would be pretending to know. Not a gesture toward inevitability &mdash; that would be optimism dressed as prophecy. Only this: the space before a sentence begins. The moment that belongs to whoever types next.</p>
+
+        <p>Dante&rsquo;s poem ends mid-sentence. His language failed. Not because the vision failed &mdash; because the vision exceeded the capacity of language to hold it.</p>
+
+        <p><strong>This project ends the same way.</strong></p>
+
+        <!-- The unfinished sentence. The text "The next word is" is
+             present. After it: a blinking cursor. CSS animates the
+             cursor's opacity. JS does not complete this sentence.
+             JS will not ever complete this sentence. -->
+        <p class="empyrean-incomplete">
+          <em>The next word is</em>
+          <span class="empyrean-cursor" aria-hidden="true">|</span>
+        </p>
+
+      </div>
+    </section>
+
+  </div><!-- /.wrapper -->
+
+
+</main>
+
+
+<script src="main.js"></script>
+</body>
+</html>

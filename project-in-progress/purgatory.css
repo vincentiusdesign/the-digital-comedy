@@ -1,0 +1,22 @@
+/* ====================================================================
+   THE DIGITAL COMEDY — purgatory.css
+
+   All design decisions for Purgatory live here. This file is empty
+   by design.
+
+   Era-accurate HTML structures are already in place in index.html:
+     - Terrace 1: nested table layout with spacer GIFs (font tags)
+     - Terrace 2: Flash-style markup hooks for keyframe motion
+     - Terrace 3: dual-browser comparison layout (intended vs IE6)
+     - Terrace 4: Web 2.0 div structure with beta badge
+     - Terrace 5: Bootstrap 3.3.7 12-column grid (CDN linked in HTML)
+     - Terrace 6: responsive layout with exaggerated breakpoints
+     - Terrace 7: monospace log with mirror observation layer
+
+   Class hooks: .purgatory, .shore, .terrace, .terrace--N (1–7),
+   .wall-of-fire, .earthly-paradise.
+
+   Note: Bootstrap 3 styles (linked in <head>) will affect Terrace 5
+   only because the grid markup is scoped there. If you want to
+   override Bootstrap classes within T5, do it scoped to .terrace--5.
+   ==================================================================== */

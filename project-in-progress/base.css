@@ -1,0 +1,252 @@
+/* ====================================================================
+   THE DIGITAL COMEDY — base.css
+
+   Minimal structural baseline. No color, typography, or spacing
+   opinions. Realm files (hell.css, purgatory.css, heaven.css) are
+   empty stubs ready for your design.
+
+   This file contains ONLY the rules required to make the project's
+   mechanics function — scroll behavior, the inversion architecture,
+   the screen-reader-only utility, the hidden state classes that JS
+   toggles. Everything else is yours.
+   ==================================================================== */
+
+
+/* ---- Reset --------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  /* Horizontal scroll is never the project's surface. */
+  overflow-x: hidden;
+}
+
+
+/* ---- Section baseline --------------------------------------------- */
+
+section {
+  position: relative;
+  width: 100%;
+}
+
+
+/* ---- Screen-reader-only utility ----------------------------------- *
+ * Used wherever visual content fragments or duplicates text in ways
+ * that hurt screen-reader readability (the Gate panels, etc.).
+ * -------------------------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ====================================================================
+   THE INVERSION ARCHITECTURE — rotation-based mechanic
+
+   The user scrolls down through Hell normally. When the boundary
+   between Hell and the ascent reaches viewport center, JS triggers
+   a 180° rotation of the entire .wrapper.
+
+   The rotation pivots around the .pivot div (between #inversion and
+   #shore). To compensate for the asymmetric shift caused by an off-
+   center pivot, the wrapper is also translated by a value computed
+   at runtime. JS measures the pivot position and wrapper height and
+   sets two CSS variables on the wrapper. The math:
+
+     P = pivot.offsetTop      (rotation origin Y)
+     H = wrapper.offsetHeight (total wrapper height)
+     --inversion-pivot-y = P
+     --inversion-shift   = 2P - H
+
+   Simultaneously, JS animates window scroll by (H - 2P) over the
+   same duration as the rotation, so the user stays anchored to the
+   boundary throughout.
+
+   All values derived from runtime layout. No fixed pixels. Works
+   for any content size, any viewport, any device.
+
+   Children of .wrapper (sections, thresholds) counter-rotate forward
+   (+180° same direction as wrapper) with a delay, producing a 360°
+   world-frame tumble per child before they settle upright.
+   ==================================================================== */
+
+.wrapper {
+  --inversion-pivot-y: 50%;
+  --inversion-shift: 0px;
+  transform-origin: 50% var(--inversion-pivot-y);
+  transition: transform 1.4s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.wrapper.is-inverted {
+  transform: rotate(180deg) translateY(var(--inversion-shift));
+}
+
+
+/* The pivot — empty zero-height div between #inversion and #shore.
+   JS reads its offsetTop. Designer should not style this. */
+.pivot {
+  height: 0;
+}
+
+
+/* ROTATION OF SECTIONS ON INVERSION
+
+   When .wrapper rotates 180°, every visible section is upside-down
+   in screen space. To keep their content readable, each leaf section
+   counter-rotates 180° around its own center — net world-frame
+   rotation = 360° = upright.
+
+   The realm wrappers (.hell, .purgatory, .heaven) DO NOT tumble. If
+   they did, they'd reverse the visual order of their inner sections,
+   which would put the user moving "up" through Heaven encountering
+   Sphere 9 before Sphere 1 — wrong reading order.
+
+   Instead: the realm wrappers stay in place (they inherit the parent
+   .wrapper's rotation visually, but apply no transform of their own).
+   Their inner sections each tumble individually around their own
+   centers. Net result: the realm wrapper as a block is flipped in
+   document space, but its internal section order is preserved.
+
+   On heading placement: realm headings (.realm-heading) sit at the
+   START of each realm's DOM order. Pre-rotation, "Hell" appears
+   first as the user begins descending into Hell. Post-rotation,
+   "Purgatory" and "Heaven" appear first as the user ascends into
+   each realm from below — because in a rotated parent's frame, the
+   first DOM child sits at the visual bottom of the realm's screen
+   extent, which is the side the user enters from.
+
+   Selector reach:
+     - Direct children of .wrapper that are NOT realm wrappers
+       (pivot, shore, perceptual-transformation, empyrean).
+     - Children of the realm wrappers (Hell sections + heading inside
+       .hell; terraces, thresholds + heading inside .purgatory;
+       spheres + heading inside .heaven).
+
+   Timing: 1.7s cubic-bezier with 0.4s delay produces the
+   inertia/settling feel — sections trail the wrapper's 1.4s rotation
+   and finish straightening just after the world settles. */
+
+.wrapper > *:not(.hell):not(.purgatory):not(.heaven),
+.wrapper > .hell > *,
+.wrapper > .purgatory > *,
+.wrapper > .heaven > * {
+  transform-origin: center center;
+  transition: transform 1.7s cubic-bezier(0.25, 0.1, 0.25, 1) 0.4s;
+}
+
+.wrapper.is-inverted > *:not(.hell):not(.purgatory):not(.heaven),
+.wrapper.is-inverted > .hell > *,
+.wrapper.is-inverted > .purgatory > *,
+.wrapper.is-inverted > .heaven > * {
+  transform: rotate(180deg);
+}
+
+
+/* Realm wrappers — semantic groupings, no transforms.
+   Class hooks (.hell, .purgatory, .heaven) remain available for
+   realm-wide styling in the realm CSS files. */
+.hell,
+.purgatory,
+.heaven {
+  /* No transform. Inner sections handle rotation individually. */
+}
+
+
+/* Realm heading defaults — minimal styling; designer overrides as
+   needed (or hides via display:none). Class hook: .realm-heading. */
+.realm-heading {
+  /* Visible by default so designers know they exist. Override or
+     hide entirely in your realm CSS. */
+}
+
+
+/* ====================================================================
+   STATE CLASSES — toggled by JS
+
+   These are the hooks the mechanics rely on. Visual treatments of
+   these states are yours to define in the realm CSS files.
+   ==================================================================== */
+
+/* Gate */
+.gate.is-opening {}
+.gate.is-passed { pointer-events: none; }
+
+/* Circle 3 — Gluttony: stacked modals */
+.modal { display: none; }
+.modal.is-active { display: block; }
+
+/* Circle 4 — Greed: verdict appears after user exhaustion */
+.verdict { display: none; }
+.verdict.is-revealed { display: block; }
+
+/* Circle 8 — Fraud: chat opened by JS, exit-intent appears on scroll-to-bottom */
+.fraud-chat { display: none; }
+.fraud-chat.is-open { display: block; }
+.fraud-exit-intent { display: none; }
+.fraud-exit-intent.is-shown { display: block; }
+
+/* Wall of Fire — hold mechanic */
+.wall-of-fire.is-passed { /* hooks for the post-hold state */ }
+.wall-of-fire .hold-progress { /* width updated by JS during hold */ }
+
+/* Heaven — orbital approach state */
+.sphere.is-approaching {}
+.sphere.is-centered {}
+
+/* Empyrean — incomplete cursor */
+.empyrean-cursor {
+  display: inline-block;
+}
+
+
+/* ====================================================================
+   PURGATORY MOUNTAIN PROGRESS INDICATOR
+
+   Per Design Strategy 1.3: "A quiet progress indicator — not a
+   percentage but a representation of the mountain with the current
+   terrace marked — appears here and only here."
+
+   JS updates --current-terrace and toggles is-active per terrace.
+   ==================================================================== */
+
+.mountain-indicator {
+  position: fixed;
+  /* Position, sizing, and visual treatment yours to design. */
+}
+
+
+/* ====================================================================
+   HEAVEN SPHERE NAVIGATOR
+
+   Per Design Strategy 1.5: "Heaven introduces a subtle sphere
+   navigator that becomes available after the Perceptual
+   Transformation. Navigation within Heaven is the only place in
+   the project where the user can move non-linearly."
+   ==================================================================== */
+
+.sphere-navigator {
+  position: fixed;
+  display: none;
+}
+
+.sphere-navigator.is-available {
+  display: block;
+}

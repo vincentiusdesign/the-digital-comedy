@@ -1,0 +1,18 @@
+/* ====================================================================
+   THE DIGITAL COMEDY — heaven.css
+
+   All design decisions for Heaven live here. This file is empty
+   by design.
+
+   Class hooks: .heaven, .perceptual-transformation, .sphere,
+   .sphere--N (1–9), .sphere-fragment, .empyrean,
+   .sphere-navigator (already styled minimally in base.css).
+
+   Sphere orbital approach state (added by JS via IntersectionObserver):
+     .sphere.is-approaching — sphere is entering viewport
+     .sphere.is-centered    — sphere is centered in viewport
+   Use these to drive subtle rotation transforms or other treatments.
+
+   Sphere 6 (Jupiter) has additional ARIA-AAA semantic hooks; visual
+   treatment must meet 7:1 contrast.
+   ==================================================================== */
