@@ -19,4 +19,4 @@ In development. Personal project.
 ## Built With
 HTML, CSS, vanilla JavaScript.
 
-[View Progress](https://)
+[View Progress](https://vincentiusdesign.github.io/the-digital-comedy/)
