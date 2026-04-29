@@ -1,0 +1,139 @@
+/* ====================================================================
+   INVERSION PROTOTYPE — prototype.css
+   ==================================================================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #1a1a1a;
+  color: #ddd;
+  font-family: Georgia, serif;
+  overflow-x: hidden;
+}
+
+
+/* ---- Debug readout ------------------------------------------------- */
+
+.debug {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.85);
+  color: #aaffaa;
+  padding: 0.75rem 1rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+  border: 1px solid #333;
+  pointer-events: none;
+}
+.debug p { margin: 0.2rem 0; }
+
+
+/* ====================================================================
+   THE WRAPPER
+
+   Active state (.is-inverted):
+     - Rotated 180° around the pivot Y position (set by JS).
+     - Translated by --inversion-shift to compensate for the
+       asymmetric shift caused by an off-center pivot.
+
+   Why the translate is needed:
+     Rotating around an off-center pivot leaves the visible content
+     shifted within the document. The amount of shift = 2P - H,
+     where P is the pivot's offset from the wrapper top and H is
+     the wrapper's total height. The translate undoes that shift.
+
+   JS measures P and H at runtime, sets both variables. Updates on
+   resize, so this works for any content size, viewport, or device.
+   ==================================================================== */
+
+.wrapper {
+  --inversion-pivot-y: 50%;
+  --inversion-shift: 0px;
+  transform-origin: 50% var(--inversion-pivot-y);
+  transition: transform 1.4s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.wrapper.is-inverted {
+  transform: rotate(180deg) translateY(var(--inversion-shift));
+}
+
+
+/* ====================================================================
+   THE PIVOT
+   Zero height. No content. Just a marker for JS to find.
+   ==================================================================== */
+
+.pivot {
+  height: 0;
+  /* Visible during prototyping. Remove this rule in production. */
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+
+/* ====================================================================
+   THE SECTIONS — forward rotation with delay
+
+   Children rotate +180° in the SAME direction as the wrapper, with
+   a delay. Total visible rotation in the world frame is
+   wrapper_rotation + child_rotation = 180° + 180° = 360°. Sections
+   spin a full revolution.
+
+   Different timing from wrapper produces inertia/settling:
+     - Wrapper: 0 to 1.4s, snappy easing.
+     - Children: 0.4s delay, then rotate over 1.7s, soft easing.
+     - Both end near t=2.1s.
+
+   First 0.4s: children stationary while wrapper rotates — children
+   tilt with the world.
+   1.4s onward: wrapper finished, children still rotating —
+   straightening up after the world has settled.
+   ==================================================================== */
+
+.section {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform-origin: center center;
+  transition: transform 1.7s cubic-bezier(0.25, 0.1, 0.25, 1) 0.4s;
+}
+
+.wrapper.is-inverted > .section {
+  transform: rotate(180deg);
+}
+
+
+/* ---- Section variants — for visual orientation during prototyping. */
+
+.section--hell      { background: #2a1010; color: #ffaaaa; }
+.section--ascent    { background: #102a1a; color: #aaffcc; }
+
+
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  font-size: 1.1rem;
+  max-width: 36rem;
+  line-height: 1.6;
+}
+
+.section[data-label]::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inversion Prototype v2</title>
+  <link rel="stylesheet" href="prototype.css">
+</head>
+<body>
+
+
+<!-- Floating debug readout — shows the current state. Remove later. -->
+<aside class="debug">
+  <p>State: <span id="debug-state">pre</span></p>
+  <p>scrollY: <span id="debug-scroll">0</span></p>
+  <p>Pivot Y: <span id="debug-pivot">—</span></p>
+</aside>
+
+
+<!-- ====================================================================
+     THE WRAPPER
+     One container for all content. JS toggles .is-inverted to fire
+     the rotation. CSS rotates this wrapper 180° around an origin
+     computed by JS — the y-position of the empty .pivot element.
+     ==================================================================== -->
+<div class="wrapper" id="wrapper">
+
+
+  <!-- HELL placeholder sections. Each gets the .section class so it
+       gets counter-rotated when the wrapper rotates. -->
+
+  <section class="section section--hell" data-label="Gate">
+    <h2>Gate</h2>
+    <p>Top of the document. The user starts here. Scrolling down enters Hell.</p>
+  </section>
+
+  <section class="section section--hell" data-label="Vestibule">
+    <h2>Vestibule</h2>
+    <p>Second section in Hell.</p>
+  </section>
+
+  <section class="section section--hell" data-label="Circle 1">
+    <h2>Circle 1 — Limbo</h2>
+    <p>Hell continues. Each section is its own viewport-height block.</p>
+  </section>
+
+  <section class="section section--hell" data-label="Circle 5">
+    <h2>Circle 5 — Wrath</h2>
+    <p>Halfway through Hell.</p>
+  </section>
+
+  <section class="section section--hell" data-label="Circle 9">
+    <h2>Circle 9 — Treachery</h2>
+    <p>The final circle of Hell. The next thing in the document is the pivot.</p>
+  </section>
+
+
+  <!-- THE PIVOT — empty div, zero height. JS reads its offsetTop to
+       compute the rotation origin and shift values. Place it exactly
+       between the descent content (Hell) and the ascent content. -->
+  <div class="pivot" id="pivot"></div>
+
+
+  <!-- POST-PIVOT (ascent) sections. After the flip, these visually
+       live above the pivot, closer to scrollY = 0. -->
+
+  <section class="section section--ascent" data-label="Shore">
+    <h2>Shore</h2>
+    <p>Entry into Purgatory. After the flip, this is just above the pivot in screen space.</p>
+  </section>
+
+  <section class="section section--ascent" data-label="Terrace 1">
+    <h2>Terrace 1</h2>
+    <p>Pride — the Layout Problem.</p>
+  </section>
+
+  <section class="section section--ascent" data-label="Terrace 7">
+    <h2>Terrace 7</h2>
+    <p>Lust — the Attention Problem.</p>
+  </section>
+
+  <section class="section section--ascent" data-label="Sphere 1">
+    <h2>Sphere 1 — Moon</h2>
+    <p>The Democratic Web.</p>
+  </section>
+
+  <section class="section section--ascent" data-label="Sphere 9">
+    <h2>Sphere 9 — Primum Mobile</h2>
+    <p>The Semantic Web.</p>
+  </section>
+
+  <section class="section section--ascent" data-label="Empyrean">
+    <h2>Empyrean</h2>
+    <p>Bottom of the document. After the flip, this is at the visual top of the page.</p>
+  </section>
+
+
+</div><!-- /.wrapper -->
+
+
+<script src="prototype.js"></script>
+</body>
+</html>
