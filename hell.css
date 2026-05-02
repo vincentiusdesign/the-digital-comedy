@@ -1,25 +1,46 @@
 /* ====================================================================
-   THE DIGITAL COMEDY — hell.css
+THE DIGITAL COMEDY — hell.css
 
-   All design decisions for Hell — color, typography, spacing, motion,
-   chromatic arc, tonal arc — live here. This file is empty by design.
+All design decisions for Hell — color, typography, spacing, motion,
+chromatic arc, tonal arc — live here. This file is empty by design.
 
-   Class hooks available in the HTML (scoped under .hell or per-circle):
+Class hooks available in the HTML (scoped under .hell or per-circle):
 
-   .gate, .gate-panel, .gate-panel--top, .gate-panel--bottom,
-   .gate-inscription, .gate.is-opening, .gate.is-passed
+.gate, .gate-panel, .gate-panel--top, .gate-panel--bottom,
+.gate-inscription, .gate.is-opening, .gate.is-passed
 
-   .vestibule, .v-item, .v-item--404, .v-item--coming-soon,
-   .v-item--loading, .v-item--construct, .v-item--maintenance,
-   .v-item--personal, .v-item--newsletter, .v-item--page-moved,
-   .v-item--empty, .v-item--lorem
+.vestibule, .v-item, .v-item--404, .v-item--coming-soon,
+.v-item--loading, .v-item--construct, .v-item--maintenance,
+.v-item--personal, .v-item--newsletter, .v-item--page-moved,
+.v-item--empty, .v-item--lorem
 
-   .acheron
+.acheron
 
-   .circle, .circle--limbo, .circle--lust, .circle--gluttony,
-   .circle--greed, .circle--wrath, .circle--heresy, .circle--violence,
-   .circle--fraud, .circle--treachery
-   .circle-verdict
+.circle, .circle--limbo, .circle--lust, .circle--gluttony,
+.circle--greed, .circle--wrath, .circle--heresy, .circle--violence,
+.circle--fraud, .circle--treachery
+.circle-verdict
 
-   Per-circle hooks listed in detail in index.html.
-   ==================================================================== */
+Per-circle hooks listed in detail in index.html.
+==================================================================== */
+.hell {
+   background-color: black;
+   color: white;
+   font-family: times new roman;
+}
+#hell-heading {
+   position: fixed;
+   top: 0;
+   opacity: 25%;
+   font-size: 25vw;
+}
+
+.threshold.gate {
+   height: 100vh;
+   width: 100vw;
+}
+
+.threshold.gate p {
+   font-size: 5rem;
+   color: red;
+}
